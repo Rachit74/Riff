@@ -1,7 +1,13 @@
+# Rest Framework imports
 from rest_framework import serializers
 
+# App imports
 from .models import Client
 
+"""
+Client Serializer
+used to serialize and deserialize the data of Client (custom user model)
+"""
 class ClientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Client
@@ -20,4 +26,7 @@ class ClientSerializer(serializers.ModelSerializer):
         )
         user.set_password(validated_data['password'])
         user.save()
+        """
+        Returns the user with validated data and hashed password
+        """
         return user

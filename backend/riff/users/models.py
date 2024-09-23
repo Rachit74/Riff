@@ -15,5 +15,8 @@ class Client(AbstractUser):
     def __str__(self):
         return self.username
     
+    """
+    is_artist method to check if a user is artist or or
+    """
     def is_artist(self):
         return self.artist
