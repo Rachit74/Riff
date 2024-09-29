@@ -8,6 +8,9 @@ from rest_framework.permissions import IsAuthenticated
 # Django imports
 from django.contrib.auth import authenticate, login, logout
 from django.middleware.csrf import get_token # used to generate csrf token
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+
 
 # App imports
 from .models import Client
@@ -61,7 +64,7 @@ returns the user profile of current logged in user
 user must be authenticated to access this endpoint at /users/profile/
 """
 class ProfileView(APIView):
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     """
     get method to handle get request
@@ -71,6 +74,18 @@ class ProfileView(APIView):
         user = request.user
         serializer = ClientSerializer(user)
         return Response(serializer.data)
+
+@method_decorator(csrf_exempt, name='dispatch')
+class LogoutView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    """
+    get method to handle get request
+    logs the user out
+    """
+    def get(self, request):
+        logout(request)
+        return Response({"message": "Logout successful"}, status=status.HTTP_200_OK)
 
 
 """

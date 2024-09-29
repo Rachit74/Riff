@@ -10,6 +10,7 @@
                 {{ user.artist }}
                 {{ user.email  }}
             </div>
+            <ProfileControls :logout="logout" />
         </div>
         <div v-else>
             <h2>Login</h2>
@@ -29,9 +30,14 @@
 </template>
 
 <script>
+import ProfileControls from './ProfileControls.vue';
 import { ref, onMounted } from 'vue';
 
 export default {
+    // register the components
+    components: {
+        ProfileControls,
+    },
     setup() {
         let isAuthenticated = ref(false);
         let user = ref(null);
@@ -99,6 +105,29 @@ export default {
                 console.error('Login Failed: ', error);
             }
         }
+
+        // note: Logout also needs csrf token and it is a post request
+        const logout = async () => {
+            try {
+                let response = await fetch('http://localhost:8000/users/logout/', {
+                    method: "GET",
+                    credentials: "include",
+                });
+                
+                console.log(response);
+
+                if (response.ok) {
+                    console.log("Logged Out");
+                    isAuthenticated.value = false
+                    user.value = null
+                } else {
+                    console.error("Failed logout", response.statusText);
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
         
         // when the page is loaded call the checkAuthStatus function
         onMounted(checkAuthStatus);
@@ -109,6 +138,7 @@ export default {
             username,
             password,
             login,
+            logout,
 
         };
     }
