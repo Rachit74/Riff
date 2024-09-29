@@ -1,6 +1,5 @@
-@import './base.css';
-
 /* main.css */
+@import './base.css';
 
 /* Layout container */
 .app-container {
@@ -11,8 +10,8 @@
 /* Sidebar styles */
 .sidebar {
   width: 250px;
-  background-color: #1f2020;
-  color: #1ed760;
+  background-color: #000000;
+  color: #b3b3b3;
   padding: 20px;
   height: 100vh; /* Full height */
   position: fixed; /* Fixed sidebar */
@@ -21,6 +20,7 @@
 .nav-header {
   font-size: 24px;
   margin-bottom: 20px;
+  color: #ffffff;
 }
 
 .nav-links {
@@ -32,13 +32,16 @@
 }
 
 .nav-links a {
-  color: white;
-  font-size: 18px;
+  color: #b3b3b3;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   transition: color 0.3s;
 }
 
-.nav-links a:hover {
-  color: #1ed760; /* Change color on hover */
+.nav-links a:hover, .nav-links a.active {
+  color: #ffffff;
 }
 
 /* Main content area */
@@ -46,11 +49,70 @@
   margin-left: 250px; /* Offset for the sidebar */
   padding: 20px;
   flex-grow: 1;
-  background-color: #f4f4f4; /* Light background for contrast */
+  background-color: #121212; /* Dark background for main content */
+  color: #ffffff;
 }
 
-/* Optional: Style the playlist div if needed */
+/* Playlist styles */
 .playlist {
   margin-top: 20px;
-  /* Additional styles for the playlist can go here */
+  background-color: #181818;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+/* Additional Spotify-inspired components */
+.button {
+  background-color: #1DB954;
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #1ed760;
+}
+
+/* Input styles */
+input[type="text"], input[type="password"], input[type="email"] {
+  background-color: #282828;
+  border: none;
+  padding: 12px;
+  border-radius: 4px;
+  color: #ffffff;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+input[type="text"]::placeholder, input[type="password"]::placeholder, input[type="email"]::placeholder {
+  color: #b3b3b3;
+}
+
+/* Card styles for playlists or albums */
+.card {
+  background-color: #181818;
+  border-radius: 8px;
+  padding: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.card:hover {
+  background-color: #282828;
+}
+
+/* Typography adjustments */
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+p {
+  color: #b3b3b3;
+  margin-bottom: 16px;
 }
