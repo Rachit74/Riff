@@ -3,8 +3,12 @@
         <!-- vue if else statement -->
         <div v-if="isAuthenticated">
             <h3>User is Authenticated</h3>
-            {{ user.value }}
-            {{ console.log('hihihih')  }}
+            <div v-if="user">
+                <!-- Only show this if user is not null -->
+                {{ user.username }}
+                {{ user.artist }}
+                {{ user.email  }}
+            </div>
         </div>
         <div v-else>
             <h2>Login</h2>
@@ -29,7 +33,7 @@ import { ref, onMounted } from 'vue';
 export default {
     setup() {
         let isAuthenticated = ref(false);
-        const user = ref(null);
+        let user = ref(null);
         const username = ref('');
         const password = ref('');
 
@@ -41,13 +45,13 @@ export default {
                 })
                 // if the respose is ok then authenticate the use
                 if (response.ok) {
-                    isAuthenticated = true;
+                    isAuthenticated.value =  true;
                     user.value = await response.json()
                     console.log(user.value);
                     console.log(isAuthenticated);
                     
                 } else {
-                    isAuthenticated = false;
+                    isAuthenticated.value = false;
                     user.value = null;
                 }
             } catch (error) {
@@ -87,6 +91,7 @@ export default {
                     await checkAuthStatus();
                 } else {
                     console.error('Login failed');
+                    isAuthenticated.value = false;
                 }
 
             } catch (error) {

@@ -2,6 +2,13 @@
 
 /* main.css */
 
+/* Layout container */
+.app-container {
+  display: flex;
+  height: 100vh; /* Full height of the viewport */
+}
+
+/* Sidebar styles */
 .sidebar {
   width: 250px;
   background-color: #1f2020;
@@ -34,7 +41,15 @@
   color: #1ed760; /* Change color on hover */
 }
 
-/* Add styles for the playlist div if needed */
+/* Main content area */
+.main-content {
+  margin-left: 250px; /* Offset for the sidebar */
+  padding: 20px;
+  flex-grow: 1;
+  background-color: #f4f4f4; /* Light background for contrast */
+}
+
+/* Optional: Style the playlist div if needed */
 .playlist {
   margin-top: 20px;
   /* Additional styles for the playlist can go here */
