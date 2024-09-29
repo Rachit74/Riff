@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,6 +41,7 @@ CSRF_TRUSTED_ORIGINS = ['http://localhost:5173']
 
 INSTALLED_APPS = [
     'users.apps.UsersConfig',
+    'tracks.apps.TracksConfig',
     
     'django.contrib.admin',
     'django.contrib.auth',
@@ -148,3 +150,9 @@ REST_FRAMEWORK = {
     #     'rest_framework.renderers.JSONRenderer',  # Only allow JSON responses
     # ),
 }
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+TRACKS_DIR = 'tracks'
+TRACKS_COVERS_DIR = 'track_covers'

@@ -19,7 +19,6 @@
 </template>
 
 <script>
-import Account from './components/Account.vue';
 export default {
   name: 'App',
 };
