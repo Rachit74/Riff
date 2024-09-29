@@ -2,9 +2,10 @@
     <div>
         <!-- vue if else statement -->
         <div v-if="isAuthenticated">
-            <h3>User is Authenticated</h3>
+            <!-- Only show this if user is not null -->
             <div v-if="user">
-                <!-- Only show this if user is not null -->
+                <!-- any user logic here else user null error -->
+                <h3>{{ user.username }}</h3>
                 {{ user.username }}
                 {{ user.artist }}
                 {{ user.email  }}
