@@ -1,0 +1,41 @@
+@import './base.css';
+
+/* main.css */
+
+.sidebar {
+  width: 250px;
+  background-color: #1f2020;
+  color: #1ed760;
+  padding: 20px;
+  height: 100vh; /* Full height */
+  position: fixed; /* Fixed sidebar */
+}
+
+.nav-header {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.nav-links {
+  list-style-type: none;
+}
+
+.nav-links li {
+  margin: 15px 0;
+}
+
+.nav-links a {
+  color: white;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #1ed760; /* Change color on hover */
+}
+
+/* Add styles for the playlist div if needed */
+.playlist {
+  margin-top: 20px;
+  /* Additional styles for the playlist can go here */
+}
