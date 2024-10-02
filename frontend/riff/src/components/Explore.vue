@@ -1,19 +1,45 @@
 <template>
-    <div class="track-card">
-        <div class="track-cover">
-            <img src="https://i.scdn.co/image/ab67616d00001e023d9688e3c4838fb3c41415da" alt="Failed">
-        </div>
-        <div class="track-data">
-            <span class="track-title-span">Hobbies</span><br>
-            <span class="track-artist-span">BigMoney</span>
-        </div>
-        <div class="controller">
-            <audio src="http://localhost:8000/media/tracks/Hobbies_-_BigMoney_Official_Song.mp3" controls>Your browser does not support the audio element.</audio>
+    <div>
+        <!-- Loop through each track -->
+        <div v-for="(track, index) in tracks" :key="index" class="track-card">
+            <div class="track-cover">
+                <img :src="track.cover" alt="Cover Image">
+            </div>
+            <div class="track-data">
+                <span class="track-title-span">{{ track.title }}</span><br>
+                <span class="track-artist-span">{{ track.artist }}</span>
+            </div>
+            <div class="controller">
+                <audio :src="track.audio" controls>Your browser does not support the audio element.</audio>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+import { ref, onMounted } from 'vue';
+
+export default {
+    setup() {
+        const tracks = ref([]); // Define tracks as a reactive reference
+
+        // Get all tracks
+        const getTracks = async () => {
+            let response = await fetch('http://localhost:8000/tracks/tracks/');
+            const data = await response.json();
+            tracks.value = data; // Update the reactive reference
+            console.log(tracks.value);
+        };
+
+        onMounted(() => {
+            getTracks(); // Call getTracks when the component is mounted
+        });
+
+        return {
+            tracks
+        };
+    }
+};
 </script>
 
 <style>

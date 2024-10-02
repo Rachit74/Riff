@@ -6,11 +6,10 @@
         </div>
       </div>
       <div v-else>
-
-        <!-- when event login-attemp or happens then call the login function -->
-        <LoginForm @login-attempt="login" />
-        <!-- Listen for registration-success event -->
-        <Signup @registration-success="login" />
+        <div v-if="!register">
+          <!-- when event login-attemp or happens then call the login function -->
+          <LoginForm @login-attempt="login"/>
+        </div>
       </div>
     </div>
     <div>
@@ -33,6 +32,7 @@
     setup() {
       let isAuthenticated = ref(false);
       let user = ref(null);
+      let showRegister = ref(null);
   
       const checkAuthStatus = async () => {
         try {
@@ -111,6 +111,7 @@
         user,
         login,
         logout,
+        showRegister,
       };
     }
   };

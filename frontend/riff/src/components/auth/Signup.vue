@@ -56,8 +56,6 @@
   
           if (response.ok) {
             console.log('User registered successfully');
-            // Emit event to parent component with the username and password
-            emit('registration-success', { username: username.value, password: password.value });
             // Handle successful registration (e.g., redirect to login page)
           } else {
             console.error('Registration failed');
